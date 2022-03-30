@@ -1,0 +1,33 @@
+<h1>Product List</h1>
+<table class="table table-info">
+    <thead>
+        <tr>
+            <th>Picture</th>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Like❤</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of listProduct">
+            <td>
+                <img src="{{product.picture}}">
+            </td>
+            <td>{{product.id}}</td>
+            <td>{{product.title}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.quantity}}</td>
+            <td> <button class="btn btn-sm btn-success">👍 {{product.like}}</button></td>
+            <td>
+                    <button class="btn btn-sm btn-warning" 
+                    [hidden]="product.quantity===0">Buy</button>       
+                    <p *ngIf="!product.quantity">out of stock</p>   <!--triple = means compare with type and value-->
+            </td>
+        </tr>
+    </tbody>
+</table>
